@@ -30,38 +30,39 @@ namespace Assignment2_Quality
             ItemPrice = itemPrice;
             StockAmount = stockAmount;
 
-            if (string.IsNullOrWhiteSpace(prodName))
-                Console.WriteLine("Product name can't be empty or null.");
-    
+        }
 
-            if (itemPrice < min_price)
-            {
-                Console.WriteLine($"Item price must be more than {min_price}");
-            }
-            else if (itemPrice > max_price) {
-                Console.WriteLine($"Item price must be less than {max_price}");
-            }
-               
+        public string ValidateProduct()
+        {
+            if (string.IsNullOrWhiteSpace(ProdName))
+                return "Product name can't be empty or null.";
 
-            if (stockAmount < min_stock) { 
-                Console.WriteLine($"Stock amount must be more than {min_stock}");
-            }else if (stockAmount > max_stock)
-            {
-                Console.WriteLine($"Stock amount must be less than {max_stock}");
-            }
+            if (ItemPrice < min_price)
+                return $"Item price must be more than {min_price}.";
+
+            if (ItemPrice > max_price)
+                return $"Item price must be less than {max_price}.";
+
+            if (StockAmount < min_stock)
+                return $"Stock amount must be more than {min_stock}.";
+
+            if (StockAmount > max_stock)
+                return $"Stock amount must be less than {max_stock}.";
+
+            return "Product is valid.";
         }
 
         // increase stock
-        public void IncreaseStock(int amount)
+        public string IncreaseStock(int amount)
         {
-            if (amount > 0)
-            {
-                StockAmount += amount;
-            }
-            else if (amount <= 0) {
-                Console.WriteLine("Amount must be a positive number");
-            } else if (StockAmount + amount > max_stock)
-                Console.WriteLine($"Stock amount cant be more than {max_stock}");
+            if (amount <= 0)
+                return "Amount must be a positive number.";
+
+            if (StockAmount + amount > max_stock)
+                return $"Stock amount can't be more than {max_stock}.";
+
+            StockAmount += amount;
+            return $"Stock increased by {amount}.";
         }
 
         //decrease stock
