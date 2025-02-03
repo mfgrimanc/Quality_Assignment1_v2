@@ -74,7 +74,7 @@ namespace Assignment2_Quality
         }
 
         //decrease stock
-        public void DecreaseStock(int amount)
+        public string DecreaseStock(int amount)
         {
             if (amount <= 0)
                 return "Amount must be a positive number.";
