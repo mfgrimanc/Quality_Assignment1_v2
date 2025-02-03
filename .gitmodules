@@ -1,0 +1,3 @@
+[submodule "TestClass"]
+	path = TestClass
+	url = https://github.com/mfgrimanc/Quality_Assignment1_v2.git
